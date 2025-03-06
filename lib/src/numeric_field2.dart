@@ -20,7 +20,7 @@ class _NumericField2State extends State<NumericField2> {
 
 class NumericField2EditingController extends TextEditingController {
   @override
-  TextSpan buildTextSpan({required BuildContext context, TextStyle? style, required bool withComposing}) {
+  TextSpan buildTextSpan({required BuildContext context, required bool withComposing, TextStyle? style}) {
     // TODO: implement buildTextSpan
     return super.buildTextSpan(context: context, style: style, withComposing: withComposing);
   }

@@ -61,8 +61,7 @@ const _buttons = [
 
 class UINumericKeyboard extends StatefulWidget {
   const UINumericKeyboard({
-    super.key,
-    required this.controller,
+    required this.controller, super.key,
   });
 
   final VirtualKeyboardController controller;
@@ -88,9 +87,9 @@ class _UINumericKeyboardState extends State<UINumericKeyboard> {
     Widget createButton(_Key key) {
       return FilledButton.tonal(
         style: ButtonStyle(
-          elevation: WidgetStatePropertyAll(0.0),
+          elevation: WidgetStatePropertyAll(0),
           visualDensity: VisualDensity.comfortable,
-          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6.0))))
+          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6)))),
         ),
         onPressed: () => _onNumberPressed(key),
         child: Row(
@@ -98,7 +97,7 @@ class _UINumericKeyboardState extends State<UINumericKeyboard> {
             Text(key.number,
                 style: TextTheme.of(context).bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),),
             const Spacer(),
             Opacity(
               opacity: 0.7,
@@ -124,13 +123,13 @@ class _UINumericKeyboardState extends State<UINumericKeyboard> {
                           ? createButton(key)
                           : SizedBox.shrink(),
                     ),
-                    if (key != row.last) HorzGap(4.0),
+                    if (key != row.last) HorzGap(4),
                   ],
                 ],
               ),
             ),
           ),
-          if (row != _buttons.last) VertGap(4.0),
+          if (row != _buttons.last) VertGap(4),
         ],
       ],
     );

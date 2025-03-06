@@ -14,13 +14,11 @@ import 'package:flutter/material.dart';
 class SnackBarActionWithFix extends SnackBarAction {
   /// Creates an action for a [SnackBar].
   const SnackBarActionWithFix({
-    super.key,
+    required this.labelWidget, required super.onPressed, super.key,
     super.textColor,
     super.disabledTextColor,
     super.backgroundColor,
     super.disabledBackgroundColor,
-    required this.labelWidget,
-    required super.onPressed,
   }) : assert(
          backgroundColor is! MaterialStateColor ||
              disabledBackgroundColor == null,
@@ -54,7 +52,7 @@ class _SnackBarActionState extends State<SnackBarActionWithFix> {
   @override
   Widget build(BuildContext context) {
     final SnackBarThemeData defaults = _SnackbarDefaultsM3(context);
-    final SnackBarThemeData snackBarTheme = Theme.of(context).snackBarTheme;
+    final snackBarTheme = Theme.of(context).snackBarTheme;
 
     WidgetStateColor resolveForegroundColor() {
       if (widget.textColor != null) {
@@ -152,11 +150,11 @@ class _SnackbarDefaultsM3 extends SnackBarThemeData {
   ).textTheme.bodyMedium!.copyWith(color: _colors.onInverseSurface);
 
   @override
-  double get elevation => 6.0;
+  double get elevation => 6;
 
   @override
   ShapeBorder get shape => const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+    borderRadius: BorderRadius.all(Radius.circular(4)),
   );
 
   @override
@@ -164,7 +162,7 @@ class _SnackbarDefaultsM3 extends SnackBarThemeData {
 
   @override
   EdgeInsets get insetPadding =>
-      const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0);
+      const EdgeInsets.fromLTRB(15, 5, 15, 10);
 
   @override
   bool get showCloseIcon => false;

@@ -1,8 +1,5 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:material_things/material_things.dart';
-
-import 'material_things_localizations.dart';
 
 enum RestrictMode {
   /// Disables tile with restricted country.
@@ -16,8 +13,7 @@ enum RestrictMode {
 /// Creates a widget to use within [MaterialPageRoute].
 class SelectCountryPage extends StatefulWidget {
   const SelectCountryPage({
-    super.key,
-    required this.countries,
+    required this.countries, super.key,
     this.searchController,
     this.restrictedCountries,
     this.restrictedReasons,
@@ -86,11 +82,6 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
   }
 
   bool _isRestricted(Country c) {
-    if (c.twoLetterCode == 'US') {
-      print("US is restricted: ${widget.restrictedCountries?.contains(c)}: "
-          "${widget.restrictedCountries!.join(',')}\n"
-          "${widget.restrictedCountries!.firstWhereOrNull((a) => a== c)}");
-    }
     return widget.restrictedCountries?.contains(c) ?? false;
   }
   String? _restrictionReason(Country c) => widget.restrictedReasons?[c];
@@ -158,7 +149,7 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
 
   @override
   Widget build(BuildContext context) {
-    final MaterialThingsLocalizations ls =
+    final ls =
       MaterialThingsLocalizations.maybeOf(context) ??
       MaterialThingsLocalizations.builtInEn;
     return Scaffold(
@@ -198,7 +189,7 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
                       icon: Icon(Icons.clear),
                     ),
                   );
-                })
+                },),
             ],
           ) : Text(ls.chooseACountry),
         ),
@@ -211,7 +202,7 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
               }),
               icon: Icon(Icons.search),
             ),
-          )
+          ),
         ],
       ),
       body: AnimatedSwitcher(
@@ -254,7 +245,7 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
             );
           },
         ),
-      )
+      ),
     );
   }
 }

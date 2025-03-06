@@ -95,7 +95,7 @@ class _NumericFieldState extends State<NumericField> {
 
   String? buildStringNumberFromFields() {
     // ... or we can use multiplication ...
-    String numberToParse = '';
+    var numberToParse = '';
     
     for (final controller in controllers) {
       controller.text = controller.text.replaceAll(notADigitRE, '');
@@ -429,12 +429,12 @@ class _NumericFieldState extends State<NumericField> {
     debugCheckHasDirectionality(context);
     final theme = NumericFieldTheme.maybeOf(context) ??
       NumericFieldThemeData(
-        gap: WidgetStatePropertyAll(8.0),
+        gap: WidgetStatePropertyAll(8),
         backgroundColor: WidgetStatePropertyAll(Colors.transparent),
         textStyle: WidgetStatePropertyAll(TextStyle(
-          fontSize: 16.0,
-          height: 2.0,
-        ))
+          fontSize: 16,
+          height: 2,
+        ),),
       );
 
     final textStyle = theme.textStyle.resolve({});
@@ -460,7 +460,7 @@ class _NumericFieldState extends State<NumericField> {
           spellCheckConfiguration: SpellCheckConfiguration.disabled(),
           autocorrect: false,
           contentInsertionConfiguration: ContentInsertionConfiguration(
-            onContentInserted: onContentInserted
+            onContentInserted: onContentInserted,
           ),
           textAlign: TextAlign.center,
           textAlignVertical: TextAlignVertical.center,
@@ -469,7 +469,7 @@ class _NumericFieldState extends State<NumericField> {
     }
 
     double getWidth(double fontSize, double coef) {
-      return max(fontSize * coef, 40.0);
+      return max(fontSize * coef, 40);
     }
 
     double calcOccupied(double cellWidth, double spacing) {
@@ -479,10 +479,10 @@ class _NumericFieldState extends State<NumericField> {
 
     (double, double) findSizes(
         double maxWidth, double fontSize, double preferredSpacing,
-        double preferredCoef) {
+        double preferredCoef,) {
       var from = 1.0;
-      var to = 0.5;
-      var step = 0.01;
+      const to = 0.5;
+      const step = 0.01;
       var spacing = preferredSpacing;
       var coef = preferredCoef;
       var width = getWidth(fontSize, coef);
@@ -497,20 +497,20 @@ class _NumericFieldState extends State<NumericField> {
       return (spacing, coef);
     }
 
-    Widget content = LayoutBuilder(
+    final Widget content = LayoutBuilder(
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
 
         final preferredSpacing = theme.gap.resolve({});
-        final preferredCoef = 1.6;
+        const preferredCoef = 1.6;
         final fontSize = textStyle.fontSize!;
 
-        double spacing = preferredSpacing;
-        double coef = preferredCoef;
+        var spacing = preferredSpacing;
+        var coef = preferredCoef;
 
         final initialOccupied = calcOccupied(getWidth(fontSize, coef), spacing);
 
-        bool wrap = false;
+        var wrap = false;
 
         if (initialOccupied > maxWidth) {
           switch (widget.automaticResizeMode) {
@@ -581,17 +581,13 @@ class _NumericFieldState extends State<NumericField> {
 @freezed
 class NumericEditingValue with _$NumericEditingValue {
   const factory NumericEditingValue({
-    /// Null if [isValid] is true or if there is not any input.
-    BigInt? number,
-
     /// Whether input is valid.
     ///
     /// Gaps in cells is about invalid input, example: [1] [empty] [2].
     /// In this case [number] will be null.
-    required bool isValid,
-
-    /// Length of a [number]. Will be zero, if [isValid] is true.
-    required int length,
+    required bool isValid, /// Length of a [number]. Will be zero, if [isValid] is true.
+    required int length, /// Null if [isValid] is true or if there is not any input.
+    BigInt? number,
 
     @Default(-1)
     int focusedDigit,
@@ -604,7 +600,7 @@ class NumericEditingController extends ValueNotifier<NumericEditingValue> {
       isValid: true,
       length: value?.toString().length ?? 0,
       number: value,
-    ));
+    ),);
 
   BigInt? get number => value.number;
   bool get isValid => value.isValid;

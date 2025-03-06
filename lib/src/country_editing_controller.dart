@@ -7,13 +7,13 @@ part 'country_editing_controller.freezed.dart';
 
 @freezed
 class CountryEditingValue with _$CountryEditingValue {
-  const CountryEditingValue._();
-
-  static const empty = CountryEditingValue();
 
   const factory CountryEditingValue({
     Country? country,
   }) = _CountryEditingValue;
+  const CountryEditingValue._();
+
+  static const empty = CountryEditingValue();
 }
 
 final class CountryEditingController

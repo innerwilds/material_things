@@ -3,8 +3,8 @@ description: Use it at your own risk!
 version: 0.0.1
 
 environment:
-  sdk: ^3.6.2
-  flutter: ">=1.17.0"
+  sdk: ^3.7.0
+  flutter: ">=3.29.0"
 
 dependencies:
   flutter:
@@ -17,11 +17,9 @@ dependencies:
   flutter_things: ^0.4.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^5.0.0
   freezed: ^2.5.8
   build_runner: ^2.4.14
+  very_good_analysis: ^7.0.0
 
 flutter:
   assets:

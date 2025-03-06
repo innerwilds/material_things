@@ -5,15 +5,13 @@ part 'numeric_field_theme.freezed.dart';
 
 class NumericFieldTheme extends InheritedTheme {
   const NumericFieldTheme({
-    super.key,
-    required super.child,
-    required this.data,
+    required super.child, required this.data, super.key,
   });
 
   final NumericFieldThemeData data;
 
   static NumericFieldThemeData? maybeOf(BuildContext context) {
-    final NumericFieldTheme? result = context.dependOnInheritedWidgetOfExactType<NumericFieldTheme>();
+    final result = context.dependOnInheritedWidgetOfExactType<NumericFieldTheme>();
     return result?.data;
   }
 

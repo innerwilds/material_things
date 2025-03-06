@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:material_things/material_things.dart';
-import 'package:material_things/src/bindings.dart';
 import 'package:logger/logger.dart';
+import 'package:material_things/material_things.dart';
 
 final _logger = Logger(
   printer: SimplePrinter(),
@@ -20,7 +19,6 @@ final phoneCountryCodeRegExp = RegExp(r'\b\d{1,3}\b', unicode: true);
 final fullNameRegExp = RegExp(r'(\b[\p{L}\s]{3,}\b)', unicode: true, caseSensitive: false);
 
 bool _zeroGroupEqualsToContent(RegExp regExp, String input, String content) {
-  print(regExp.firstMatch(input)?.group(0));
   return regExp.firstMatch(input)?.group(0)?.toLowerCase() ==
       content.toLowerCase();
 }
@@ -30,19 +28,19 @@ Country? defaultUserInputFindCountry(String input, List<Country> countries) {
 }
 
 Country? _defaultUserInputFindCountry(String input, List<Country> countries,
-    [bool phoneCodeOnly = false]) {
+    [bool phoneCodeOnly = false,]) {
   final matches = <Country>[];
 
   for (final country in countries) {
-    bool hasMatch = false;
+    var hasMatch = false;
 
     hasMatch |= !phoneCodeOnly &&
         _zeroGroupEqualsToContent(fullNameRegExp, input, country.fullName);
     hasMatch |= !phoneCodeOnly &&
         _zeroGroupEqualsToContent(
-            twoLetterCodeRegExp, input, country.twoLetterCode);
+            twoLetterCodeRegExp, input, country.twoLetterCode,);
     hasMatch |= _zeroGroupEqualsToContent(
-        phoneCountryCodeRegExp, input, country.phoneCountryCode.toString());
+        phoneCountryCodeRegExp, input, country.phoneCountryCode.toString(),);
 
     if (hasMatch) {
       matches.add(country);
@@ -66,9 +64,9 @@ Country? _defaultUserInputFindCountry(String input, List<Country> countries,
         .ensureInitialized()
         .onError((error, stacktrace) {
       _logger.e(
-          "Error happens while initializing MaterialThingsBindings."
-          "This error is safe, but it needed to be debugged.",
-          error: error, stackTrace: stacktrace);
+          'Error happens while initializing MaterialThingsBindings.'
+          'This error is safe, but it needed to be debugged.',
+          error: error, stackTrace: stacktrace,);
     });
   }
 
@@ -101,8 +99,7 @@ enum CountryFieldType {
 
 class CountryField extends StatefulWidget {
   const CountryField({
-    super.key,
-    required this.countries,
+    required this.countries, super.key,
     this.groupId = EditableText,
     this.displayCountry = defaultDisplayCountry,
     this.controller,
@@ -129,7 +126,7 @@ class CountryField extends StatefulWidget {
     this.autofillHints,
   }) : assert(type == CountryFieldType.plusSignPrefixedPhoneCode
             ? keyboardType == TextInputType.number
-            : true);
+            : true,);
 
   /// Will be called on [controller] notify to create a text for underlying
   /// [TextField].
@@ -292,8 +289,8 @@ class _CountryFieldState extends State<CountryField> with RestorationMixin {
 
   @override
   Widget build(BuildContext context) {
-    InputDecoration decoration = widget.decoration;
-    int? maxLength = widget.maxLength;
+    var decoration = widget.decoration;
+    var maxLength = widget.maxLength;
 
     if (widget.type == CountryFieldType.plusSignPrefixedPhoneCode) {
       maxLength = 3;
@@ -307,7 +304,7 @@ class _CountryFieldState extends State<CountryField> with RestorationMixin {
     final inputFormatters = [
       ...widget.inputFormatters,
       if (widget.type == CountryFieldType.plusSignPrefixedPhoneCode)
-        FilteringTextInputFormatter(notADigitRE, allow: false)
+        FilteringTextInputFormatter(notADigitRE, allow: false),
     ];
 
     return TextField(

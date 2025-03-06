@@ -1,8 +1,4 @@
-import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_things/flutter_things.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'countries.dart';
 import 'country_editing_controller.dart';
@@ -11,14 +7,13 @@ import 'country_editing_controller.dart';
 /// [TextField] using [InputDecorator] and makes it tappable as a [InkWell].
 class CountryButton extends StatefulWidget {
   const CountryButton({
-    super.key,
-    required this.onTap,
+    required this.onTap, super.key,
     this.country,
     this.controller,
     this.focusNode,
     this.decoration,
     this.additionalCountries,
-  }) : assert(country == null || controller == null, "You can use either controller or country, not both");
+  }) : assert(country == null || controller == null, 'You can use either controller or country, not both');
 
   final FocusNode? focusNode;
 
@@ -104,14 +99,14 @@ class _CountryButtonState extends State<CountryButton> {
                       left: -(i + 1).toDouble() * 5,
                       top: -(i + 1).toDouble() * 5,
                       child: Text(
-                          aCountries[i].emoji, textAlign: TextAlign.center)),
+                          aCountries[i].emoji, textAlign: TextAlign.center,),),
               if (aCountries != null)
                 for (var i = aCountries.length - 1; i > -1; i--)
                   Positioned(
                       left: (i - aCountries.length ~/ 2 + 1).toDouble() * 5,
                       top: (i - aCountries.length ~/ 2 + 1).toDouble() * 5,
                       child: Text(
-                          aCountries[i].emoji, textAlign: TextAlign.center)),
+                          aCountries[i].emoji, textAlign: TextAlign.center,),),
               Text(_country?.emoji ?? '🏴‍☠️', textAlign: TextAlign.center),
             ],
           ),

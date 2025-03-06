@@ -12,15 +12,12 @@ class AutoAnimatedIcon extends ImplicitlyAnimatedWidget {
     required super.duration,
     required this.icon,
     super.key,
-    this.curve = Curves.decelerate,
+    super.curve = Curves.decelerate,
     this.color,
     this.size,
     this.semanticLabel,
     this.textDirection,
   });
-
-  @override
-  final Curve curve;
 
   /// The color to use when drawing the icon.
   ///

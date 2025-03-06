@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:material_things/material_things.dart';
 
-import 'restorable_phone_editing_controller.dart';
 
 part 'phone_field.freezed.dart';
 
@@ -14,8 +13,7 @@ final _oneAndMoreNonDigit = RegExp(r'\D+', unicode: true);
 
 class PhoneField extends StatefulWidget {
   const PhoneField({
-    super.key,
-    required this.countries,
+    required this.countries, super.key,
     this.groupId = EditableText,
     this.controller,
     this.restorationId,
@@ -115,7 +113,6 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
   }
 
   void _onCountryProxyNotify() {
-    print('HELLO');
     _onInternalCountryChange(_countryProxyController.country);
   }
 
@@ -218,11 +215,11 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
     required TextScaler textScaler,
     required TextStyle style,
   }) {
-    final Size size = (TextPainter(
+    final size = (TextPainter(
             text: TextSpan(text: '+999', style: style),
             maxLines: 1,
             textScaler: textScaler,
-            textDirection: directionality)
+            textDirection: directionality,)
           ..layout())
         .size;
     return size.width;
@@ -261,7 +258,7 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
       controller: _countryProxyController,
     );
 
-    double countryFieldMaxWidth = _calcPhoneCodeWidthAsAText(
+    var countryFieldMaxWidth = _calcPhoneCodeWidthAsAText(
       textScaler: MediaQuery.of(context).textScaler,
       directionality: directionality,
       style: textStyle,
@@ -328,7 +325,7 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
       child: nsnField,
     );
 
-    List<Widget> row = [
+    var row = <Widget>[
       countryField,
       const VerticalDivider(),
       nsnField,
@@ -365,14 +362,14 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
 
 @freezed
 class PhoneEditingValue with _$PhoneEditingValue {
-  const PhoneEditingValue._();
-
-  static const empty = PhoneEditingValue();
 
   const factory PhoneEditingValue({
     Country? country,
     @Default('') String nsn,
   }) = _PhoneEditingValue;
+  const PhoneEditingValue._();
+
+  static const empty = PhoneEditingValue();
 }
 
 final class PhoneEditingController extends ValueNotifier<PhoneEditingValue> {
@@ -410,7 +407,7 @@ class _DefaultPhoneFieldNsnInputFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+      TextEditingValue oldValue, TextEditingValue newValue,) {
     if (!newValue.composing.isCollapsed) {
       return newValue;
     }
@@ -425,7 +422,7 @@ class _DefaultPhoneFieldNsnInputFormatter extends TextInputFormatter {
   }
 
   TextEditingValue _format(TextEditingValue value) {
-    final Iterable<int>? spacePositions = this.spacePositions;
+    final spacePositions = this.spacePositions;
     final xCount = this.xCount;
 
     if (spacePositions == null) {
@@ -433,7 +430,7 @@ class _DefaultPhoneFieldNsnInputFormatter extends TextInputFormatter {
     }
 
     final unformatted = value.text.replaceAll(_oneAndMoreNonDigit, '');
-    String withSpacesInRightPlaces = unformatted.substring(0, xCount == null ? null : min(xCount, unformatted.length));
+    var withSpacesInRightPlaces = unformatted.substring(0, xCount == null ? null : min(xCount, unformatted.length));
 
     for (final idx in spacePositions) {
       if (idx < withSpacesInRightPlaces.length) {
@@ -469,8 +466,7 @@ typedef PhoneFormFieldResult = (Country?, String);
 
 class PhoneFormField extends FormField<PhoneFormFieldResult> {
   PhoneFormField({
-    super.key,
-    required List<Country> countries,
+    required List<Country> countries, super.key,
     this.groupId = EditableText,
     this.controller,
     (Country?, String)? initialValue,
@@ -513,8 +509,8 @@ class PhoneFormField extends FormField<PhoneFormFieldResult> {
         initialValue: controller != null ? (controller.country, controller.nsn) : (initialValue ?? const (null, '')),
         enabled: enabled ?? decoration?.enabled ?? true,
         builder: (FormFieldState<PhoneFormFieldResult> field) {
-          final _PhoneFormFieldState state = field as _PhoneFormFieldState;
-          final InputDecoration effectiveDecoration = (decoration ?? const InputDecoration())
+          final state = field as _PhoneFormFieldState;
+          final effectiveDecoration = (decoration ?? const InputDecoration())
               .applyDefaults(Theme.of(field.context).inputDecorationTheme);
           
           void onChangedHandler(Country? country, String nsn) {
@@ -609,7 +605,7 @@ class _PhoneFormFieldState extends FormFieldState<PhoneFormFieldResult> {
       _createLocalController(
         widget.initialValue != null ? PhoneEditingValue(
           country: widget.initialValue!.$1,
-          nsn: widget.initialValue!.$2
+          nsn: widget.initialValue!.$2,
         ) : null,
       );
     } else {

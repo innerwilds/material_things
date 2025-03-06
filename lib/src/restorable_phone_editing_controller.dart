@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import 'phone_field.dart';
 import 'countries.dart';
+import 'phone_field.dart';
 
 /// A [RestorableProperty] that knows how to store and restore a
 /// [TextEditingController].
@@ -44,12 +44,12 @@ class RestorablePhoneEditingController extends RestorableChangeNotifier<PhoneEdi
 
     assert(data is List);
 
-    final [String? countryRow, String nsn!] = data as List<String?>;
+    final [String? countryRow, String? nsn] = data as List<String?>;
     final country = countryRow == null ? null : Country.fromRow(countryRow);
 
     return PhoneEditingController(
       country: country,
-      nsn: nsn,
+      nsn: nsn ?? '',
     );
   }
 

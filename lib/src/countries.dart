@@ -6,14 +6,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'countries.freezed.dart';
 
 final class AssetCountries extends Countries {
+
+  const AssetCountries._({required this.countries});
   @override
   final List<Country> countries;
 
-  const AssetCountries._({required this.countries});
-
   static Future<Countries> load([String packageName = 'ui_things', String assetsFile = 'assets/countries.txt']) async {
     final raw = await rootBundle.loadString(
-      'packages/$packageName/$assetsFile'
+      'packages/$packageName/$assetsFile',
     );
     final countries = raw.split(newLineRegExp).map((line) {
       return Country.fromRow(line);
@@ -24,9 +24,9 @@ final class AssetCountries extends Countries {
 }
 
 final class HardcodedCountries extends Countries {
-  HardcodedCountries._();
 
   factory HardcodedCountries() => _instance = HardcodedCountries._();
+  HardcodedCountries._();
 
   static HardcodedCountries? _instance;
 
@@ -283,14 +283,14 @@ final class HardcodedCountries extends Countries {
   fromJson: false,
 )
 class Country with _$Country {
-  const Country._();
 
   /// You need to provide upper cased [twoLetterCode].
   const factory Country(
     int phoneCountryCode,
     String twoLetterCode,
     String fullName,
-    [String? format]) = _Country;
+    [String? format,]) = _Country;
+  const Country._();
 
   factory Country.fromRow(String row) {
     final [a, b, c, ...rest] = row.split(';');
@@ -322,7 +322,7 @@ abstract interface class Countries {
   List<Country> get countries;
 
   Country? byPhoneCode(int phoneCode) => countries.firstWhereOrNull((c)
-    => c.phoneCountryCode == phoneCode);
+    => c.phoneCountryCode == phoneCode,);
 
   Country? byTwoLetterCode(String iso) => countries.firstWhereOrNull((c) => c.twoLetterCode == iso);
 }
