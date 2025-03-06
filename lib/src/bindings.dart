@@ -1,4 +1,5 @@
-import 'package:telephony/telephony.dart';
+import 'package:flutter/foundation.dart';
+import 'package:user_country_detector_android/user_country_detector_android.dart';
 
 final class MaterialThingsBindings {
   MaterialThingsBindings._();
@@ -34,21 +35,20 @@ final class TelephonyData {
   TelephonyData._();
 
   Future<void> _update() async {
-    isSupported = await TelephonyManager.isSupported;
-    if (isSupported) {
-      networkCountryIso = (await TelephonyManager.getNetworkCountryIso()).toLowerCase();
-      simCountryIso = (await TelephonyManager.getSimCountryIso()).toLowerCase();
-    } else {
-      networkCountryIso = '';
-      simCountryIso = '';
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        _isSupported = await UserCountryDetectorAndroid.isSupported;
+        if (isSupported) {
+          _countryIso = await UserCountryDetectorAndroid.getCountryIso3166Alpha2();
+        }
+      default:
+        _isSupported = false;
     }
   }
-  
-  bool isSupported = false;
 
-  /// In a lower case.
-  String simCountryIso = '';
+  bool _isSupported = false;
+  String _countryIso = '';
 
-  /// In a lower case.
-  String networkCountryIso = '';
+  bool get isSupported => _isSupported;
+  String get countryIso => _countryIso;
 }

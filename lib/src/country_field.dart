@@ -51,13 +51,11 @@ Country? _defaultUserInputFindCountry(String input, List<Country> countries,
 
   /// In case of [phoneCodeOnly] or when user inputs phone code with custom type field.
   if (MaterialThingsBindings.instance.isInitialized) {
-    final simCountry =
-        MaterialThingsBindings.instance.telephonyData.simCountryIso;
-    final networkCountry =
-        MaterialThingsBindings.instance.telephonyData.networkCountryIso;
+    final countryIso =
+        MaterialThingsBindings.instance.telephonyData.countryIso.toLowerCase();
     final countryMatchedUserCountry = matches.firstWhereOrNull((c) {
       final cLower = c.twoLetterCode.toLowerCase();
-      return cLower == simCountry || cLower == networkCountry;
+      return cLower == countryIso;
     });
     if (countryMatchedUserCountry != null) {
       return countryMatchedUserCountry;
