@@ -13,8 +13,8 @@ dependencies:
   collection: ^1.19.0
   logger: ^2.5.0
   user_country_detector_android: ^0.0.1
-  dart_things: ^0.7.1
   flutter_things: ^0.4.2
+  dart_things: ^0.8.0
 
 dev_dependencies:
   freezed: ^2.5.8

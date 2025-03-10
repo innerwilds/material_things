@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: dart_things
-      sha256: e9f7bf0d66bffa7916f4d076699193b520cda727bfc6b074d6439a43de889bf9
+      sha256: "2f8a9816ba4fa1a35a7122c8f1fdbf69686002c8816296bcaea16749073ef6a6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.8.0"
   device_info_plus:
     dependency: transitive
     description:
@@ -206,7 +206,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   meta:
     dependency: transitive
     description:
