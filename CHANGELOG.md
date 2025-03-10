@@ -9,3 +9,6 @@ Removed bad things
 
 ## 0.2.0
 Upgraded dart things
+
+## 0.3.0
+Upgraded flutter things

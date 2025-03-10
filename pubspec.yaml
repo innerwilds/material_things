@@ -1,6 +1,6 @@
 name: material_things
 description: Use it at your own risk!
-version: 0.2.0
+version: 0.3.0
 
 environment:
   sdk: ^3.7.0
