@@ -1,0 +1,26 @@
+name: material_things
+description: Use it at your own risk!
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.0
+  flutter: ">=3.29.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.4.4
+  collection: ^1.19.0
+  logger: ^2.5.0
+  user_country_detector_android: ^0.0.1
+  dart_things: ^0.7.1
+  flutter_things: ^0.4.2
+
+dev_dependencies:
+  freezed: ^2.5.8
+  build_runner: ^2.4.14
+  very_good_analysis: ^7.0.0
+
+flutter:
+  assets:
+    - assets/countries.txt
