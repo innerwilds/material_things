@@ -119,10 +119,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_things
-      sha256: "8c9948f84a1121f31ada3a638b9344906bfc2c83969e15e9a0419f3ffd494e44"
+      sha256: "04e5b78c13bc028c6137e93c1e4d653cc8f36fa8f3583f4783dab26e6e41080c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.6.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -206,7 +206,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.2.0"
+    version: "0.4.0"
   meta:
     dependency: transitive
     description:
