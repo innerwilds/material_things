@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: dart_things
-      sha256: "2f8a9816ba4fa1a35a7122c8f1fdbf69686002c8816296bcaea16749073ef6a6"
+      sha256: db3778bcfdbae42c4cf919d4109ff40c1f42162c55230a76cc55a9fa68376887
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.1"
   device_info_plus:
     dependency: transitive
     description:
@@ -119,10 +119,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_things
-      sha256: "04e5b78c13bc028c6137e93c1e4d653cc8f36fa8f3583f4783dab26e6e41080c"
+      sha256: ef6d43075281f215cb5885deefdd82ca3d9e234c1a77b62009cbf58a55292ec9
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0"
+    version: "0.6.5"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -132,10 +132,10 @@ packages:
     dependency: transitive
     description:
       name: freezed_annotation
-      sha256: c2e2d632dd9b8a2b7751117abcfc2b4888ecfe181bd9fca7170d9ef02e595fe2
+      sha256: c87ff004c8aa6af2d531668b46a4ea379f7191dc6dfa066acd53d506da6e044b
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.4"
+    version: "3.0.0"
   json_annotation:
     dependency: transitive
     description:
@@ -176,14 +176,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
-  logger:
-    dependency: transitive
-    description:
-      name: logger
-      sha256: be4b23575aac7ebf01f225a241eb7f6b5641eeaf43c6a8613510fc2f8cf187d1
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.5.0"
   matcher:
     dependency: transitive
     description:
@@ -206,7 +198,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.4.0"
+    version: "0.4.1"
   meta:
     dependency: transitive
     description:
