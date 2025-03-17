@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_things/flutter_things.dart';
 
 /// Works as [ImplicitlyAnimatedWidget].
 ///
@@ -84,9 +83,9 @@ class _AutoAnimatedIconState
   @override
   void initState() {
     super.initState();
-    _curved = TransformAnimation<double, double>(
+    _curved = Animation.fromValueListenable(
       animation,
-      transform: (a) {
+      transformer: (a) {
         return widget.curve.transform(a);
       },
     );

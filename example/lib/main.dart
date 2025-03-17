@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_things/material_things.dart';
 
-void main() {
+late List<Country> countries;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  countries = await AssetCountries.load();
   runApp(const MyApp());
 }
 
@@ -65,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           MaterialPageRoute(
                             builder: (context) {
                               return SelectCountryPage(
-                                countries: HardcodedCountries().countries,
+                                countries: countries,
                                 restrictedCountries: [
                                   const Country(1, 'US', 'United States'),
                                 ],
@@ -88,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         labelText: "Just a country name",
                       ),
                       type: CountryFieldType.custom,
-                      countries: HardcodedCountries().countries,
+                      countries: countries,
                     ),
                     PhoneField(
                       controller: _phoneController,
-                      countries: HardcodedCountries().countries,
+                      countries: countries,
                       onChanged: (country, nsn) {
                         setState(() {
                           _country = country;
@@ -120,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           MaterialPageRoute(
                             builder: (context) {
                               return SelectCountryPage(
-                                countries: HardcodedCountries().countries,
+                                countries: countries,
                                 restrictedCountries: [
                                   const Country(1, 'US', 'United States'),
                                 ],
@@ -150,10 +154,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       autofillHints: {'Russian Federation'},
-                      countries: HardcodedCountries().countries,
+                      countries: countries,
                     ),
                     PhoneField(
-                      countries: HardcodedCountries().countries,
+                      countries: countries,
                       onChanged: (country, nsn) {
                         setState(() {
                           _country = country;

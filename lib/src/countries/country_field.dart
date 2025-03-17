@@ -1,14 +1,11 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:logger/logger.dart';
 import 'package:material_things/material_things.dart';
-
-import '../_bindings.dart';
-
-final _logger = Logger(printer: SimplePrinter());
+import 'package:material_things/src/_bindings.dart';
 
 typedef CountryFinderWithinUserInput = Country? Function(String, List<Country>);
 
@@ -79,12 +76,16 @@ Country? _defaultUserInputFindCountry(
       error,
       stacktrace,
     ) {
-      _logger.e(
-        'Error happens while initializing MaterialThingsBindings.'
-        'This error is safe, but it needed to be debugged.',
-        error: error,
-        stackTrace: stacktrace,
-      );
+      if (kDebugMode) {
+        debugPrintStack(
+          label:
+            'Error happens while initializing MaterialThingsBindings.'
+            'This error is safe, but it needed to be debugged.\n'
+            'Without MaterialThingsBindings there is no user country detection'
+            'country CountryField.',
+          stackTrace: stacktrace,
+        );
+      }
     });
   }
 
