@@ -18,3 +18,6 @@ Upgraded flutter things
 
 ## 0.4.1
 Upgraded flutter things
+
+## 0.4.2
+Deps upgrade, fixes, refactoring.
