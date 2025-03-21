@@ -79,10 +79,10 @@ Country? _defaultUserInputFindCountry(
       if (kDebugMode) {
         debugPrintStack(
           label:
-            'Error happens while initializing MaterialThingsBindings.'
-            'This error is safe, but it needed to be debugged.\n'
-            'Without MaterialThingsBindings there is no user country detection'
-            'country CountryField.',
+              'Error happens while initializing MaterialThingsBindings.'
+              'This error is safe, but it needed to be debugged.\n'
+              'Without MaterialThingsBindings there is no user country detection'
+              'country CountryField.',
           stackTrace: stacktrace,
         );
       }

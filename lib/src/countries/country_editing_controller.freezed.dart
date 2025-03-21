@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,156 +10,145 @@ part of 'country_editing_controller.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
-mixin _$CountryEditingValue {
-  Country? get country => throw _privateConstructorUsedError;
+mixin _$CountryEditingValue implements DiagnosticableTreeMixin {
 
-  /// Create a copy of CountryEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CountryEditingValueCopyWith<CountryEditingValue> get copyWith =>
-      throw _privateConstructorUsedError;
+ Country? get country;
+/// Create a copy of CountryEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CountryEditingValueCopyWith<CountryEditingValue> get copyWith => _$CountryEditingValueCopyWithImpl<CountryEditingValue>(this as CountryEditingValue, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CountryEditingValue'))
+    ..add(DiagnosticsProperty('country', country));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryEditingValue&&(identical(other.country, country) || other.country == country));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,country);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CountryEditingValue(country: $country)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CountryEditingValueCopyWith<$Res> {
-  factory $CountryEditingValueCopyWith(
-    CountryEditingValue value,
-    $Res Function(CountryEditingValue) then,
-  ) = _$CountryEditingValueCopyWithImpl<$Res, CountryEditingValue>;
-  @useResult
-  $Res call({Country? country});
-}
+abstract mixin class $CountryEditingValueCopyWith<$Res>  {
+  factory $CountryEditingValueCopyWith(CountryEditingValue value, $Res Function(CountryEditingValue) _then) = _$CountryEditingValueCopyWithImpl;
+@useResult
+$Res call({
+ Country? country
+});
 
+
+
+
+}
 /// @nodoc
-class _$CountryEditingValueCopyWithImpl<$Res, $Val extends CountryEditingValue>
+class _$CountryEditingValueCopyWithImpl<$Res>
     implements $CountryEditingValueCopyWith<$Res> {
-  _$CountryEditingValueCopyWithImpl(this._value, this._then);
+  _$CountryEditingValueCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CountryEditingValue _self;
+  final $Res Function(CountryEditingValue) _then;
 
-  /// Create a copy of CountryEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? country = freezed}) {
-    return _then(
-      _value.copyWith(
-            country:
-                freezed == country
-                    ? _value.country
-                    : country // ignore: cast_nullable_to_non_nullable
-                        as Country?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of CountryEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? country = freezed,}) {
+  return _then(_self.copyWith(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Country?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CountryEditingValueImplCopyWith<$Res>
-    implements $CountryEditingValueCopyWith<$Res> {
-  factory _$$CountryEditingValueImplCopyWith(
-    _$CountryEditingValueImpl value,
-    $Res Function(_$CountryEditingValueImpl) then,
-  ) = __$$CountryEditingValueImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Country? country});
 }
 
-/// @nodoc
-class __$$CountryEditingValueImplCopyWithImpl<$Res>
-    extends _$CountryEditingValueCopyWithImpl<$Res, _$CountryEditingValueImpl>
-    implements _$$CountryEditingValueImplCopyWith<$Res> {
-  __$$CountryEditingValueImplCopyWithImpl(
-    _$CountryEditingValueImpl _value,
-    $Res Function(_$CountryEditingValueImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of CountryEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? country = freezed}) {
-    return _then(
-      _$CountryEditingValueImpl(
-        country:
-            freezed == country
-                ? _value.country
-                : country // ignore: cast_nullable_to_non_nullable
-                    as Country?,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$CountryEditingValueImpl extends _CountryEditingValue
-    with DiagnosticableTreeMixin {
-  const _$CountryEditingValueImpl({this.country}) : super._();
 
-  @override
-  final Country? country;
+class _CountryEditingValue extends CountryEditingValue with DiagnosticableTreeMixin {
+  const _CountryEditingValue({this.country}): super._();
+  
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CountryEditingValue(country: $country)';
-  }
+@override final  Country? country;
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CountryEditingValue'))
-      ..add(DiagnosticsProperty('country', country));
-  }
+/// Create a copy of CountryEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CountryEditingValueCopyWith<_CountryEditingValue> get copyWith => __$CountryEditingValueCopyWithImpl<_CountryEditingValue>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CountryEditingValueImpl &&
-            (identical(other.country, country) || other.country == country));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, country);
-
-  /// Create a copy of CountryEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CountryEditingValueImplCopyWith<_$CountryEditingValueImpl> get copyWith =>
-      __$$CountryEditingValueImplCopyWithImpl<_$CountryEditingValueImpl>(
-        this,
-        _$identity,
-      );
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CountryEditingValue'))
+    ..add(DiagnosticsProperty('country', country));
 }
 
-abstract class _CountryEditingValue extends CountryEditingValue {
-  const factory _CountryEditingValue({final Country? country}) =
-      _$CountryEditingValueImpl;
-  const _CountryEditingValue._() : super._();
-
-  @override
-  Country? get country;
-
-  /// Create a copy of CountryEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CountryEditingValueImplCopyWith<_$CountryEditingValueImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryEditingValue&&(identical(other.country, country) || other.country == country));
 }
+
+
+@override
+int get hashCode => Object.hash(runtimeType,country);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CountryEditingValue(country: $country)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CountryEditingValueCopyWith<$Res> implements $CountryEditingValueCopyWith<$Res> {
+  factory _$CountryEditingValueCopyWith(_CountryEditingValue value, $Res Function(_CountryEditingValue) _then) = __$CountryEditingValueCopyWithImpl;
+@override @useResult
+$Res call({
+ Country? country
+});
+
+
+
+
+}
+/// @nodoc
+class __$CountryEditingValueCopyWithImpl<$Res>
+    implements _$CountryEditingValueCopyWith<$Res> {
+  __$CountryEditingValueCopyWithImpl(this._self, this._then);
+
+  final _CountryEditingValue _self;
+  final $Res Function(_CountryEditingValue) _then;
+
+/// Create a copy of CountryEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? country = freezed,}) {
+  return _then(_CountryEditingValue(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Country?,
+  ));
+}
+
+
+}
+
+// dart format on

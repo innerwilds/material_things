@@ -6,7 +6,7 @@ import 'countries.dart';
 part 'country_editing_controller.freezed.dart';
 
 @freezed
-class CountryEditingValue with _$CountryEditingValue {
+abstract class CountryEditingValue with _$CountryEditingValue {
   const factory CountryEditingValue({Country? country}) = _CountryEditingValue;
   const CountryEditingValue._();
 

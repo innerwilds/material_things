@@ -414,13 +414,15 @@ class _NumericFieldState extends State<NumericField> {
     debugCheckHasDirectionality(context);
     final theme =
         NumericFieldTheme.maybeOf(context) ??
-        NumericFieldThemeData(
+        const NumericFieldThemeData(
           gap: WidgetStatePropertyAll(8),
           backgroundColor: WidgetStatePropertyAll(Colors.transparent),
           textStyle: WidgetStatePropertyAll(TextStyle(fontSize: 16, height: 2)),
         );
 
-    final textStyle = theme.textStyle.resolve({});
+    final textStyle =
+        theme.textStyle?.resolve({}) ??
+        DefaultTextStyle.of(context).style;
 
     assert(
       textStyle.fontSize != null,
@@ -436,15 +438,16 @@ class _NumericFieldState extends State<NumericField> {
       return SizedBox(
         width: width,
         child: TextField(
-          decoration: widget.decoration.copyWith(counter: SizedBox.shrink()),
+          decoration: widget.decoration.copyWith(
+            counter: const SizedBox.shrink(),
+          ),
           style: textStyle.copyWith(fontSize: fontSize),
           keyboardType: widget.keyboardType,
           onTapOutside: widget.onTapOutside,
           focusNode: fn,
           controller: tec,
-          maxLines: 1,
           maxLength: 1,
-          spellCheckConfiguration: SpellCheckConfiguration.disabled(),
+          spellCheckConfiguration: const SpellCheckConfiguration.disabled(),
           autocorrect: false,
           contentInsertionConfiguration: ContentInsertionConfiguration(
             onContentInserted: onContentInserted,
@@ -491,7 +494,7 @@ class _NumericFieldState extends State<NumericField> {
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
 
-        final preferredSpacing = theme.gap.resolve({});
+        final preferredSpacing = theme.gap?.resolve({}) ?? 4.0;
         const preferredCoef = 1.6;
         final fontSize = textStyle.fontSize!;
 
@@ -568,7 +571,7 @@ class _NumericFieldState extends State<NumericField> {
 }
 
 @freezed
-class NumericEditingValue with _$NumericEditingValue {
+abstract class NumericEditingValue with _$NumericEditingValue {
   const factory NumericEditingValue({
     /// Whether input is valid.
     ///

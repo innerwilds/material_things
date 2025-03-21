@@ -8,4 +8,5 @@ sort_constructors_first,\
 sort_unnamed_constructors_first,\
 unnecessary_import,\
 unnecessary_null_checks,\
-unused_import
+unused_import,\
+avoid_redundant_argument_values

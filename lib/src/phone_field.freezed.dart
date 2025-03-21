@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,164 +10,136 @@ part of 'phone_field.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$PhoneEditingValue {
-  Country? get country => throw _privateConstructorUsedError;
-  String get nsn => throw _privateConstructorUsedError;
 
-  /// Create a copy of PhoneEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PhoneEditingValueCopyWith<PhoneEditingValue> get copyWith =>
-      throw _privateConstructorUsedError;
+ Country? get country; String get nsn;
+/// Create a copy of PhoneEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PhoneEditingValueCopyWith<PhoneEditingValue> get copyWith => _$PhoneEditingValueCopyWithImpl<PhoneEditingValue>(this as PhoneEditingValue, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PhoneEditingValue&&(identical(other.country, country) || other.country == country)&&(identical(other.nsn, nsn) || other.nsn == nsn));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,country,nsn);
+
+@override
+String toString() {
+  return 'PhoneEditingValue(country: $country, nsn: $nsn)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PhoneEditingValueCopyWith<$Res> {
-  factory $PhoneEditingValueCopyWith(
-    PhoneEditingValue value,
-    $Res Function(PhoneEditingValue) then,
-  ) = _$PhoneEditingValueCopyWithImpl<$Res, PhoneEditingValue>;
-  @useResult
-  $Res call({Country? country, String nsn});
-}
+abstract mixin class $PhoneEditingValueCopyWith<$Res>  {
+  factory $PhoneEditingValueCopyWith(PhoneEditingValue value, $Res Function(PhoneEditingValue) _then) = _$PhoneEditingValueCopyWithImpl;
+@useResult
+$Res call({
+ Country? country, String nsn
+});
 
+
+
+
+}
 /// @nodoc
-class _$PhoneEditingValueCopyWithImpl<$Res, $Val extends PhoneEditingValue>
+class _$PhoneEditingValueCopyWithImpl<$Res>
     implements $PhoneEditingValueCopyWith<$Res> {
-  _$PhoneEditingValueCopyWithImpl(this._value, this._then);
+  _$PhoneEditingValueCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PhoneEditingValue _self;
+  final $Res Function(PhoneEditingValue) _then;
 
-  /// Create a copy of PhoneEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? country = freezed, Object? nsn = null}) {
-    return _then(
-      _value.copyWith(
-            country:
-                freezed == country
-                    ? _value.country
-                    : country // ignore: cast_nullable_to_non_nullable
-                        as Country?,
-            nsn:
-                null == nsn
-                    ? _value.nsn
-                    : nsn // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of PhoneEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? country = freezed,Object? nsn = null,}) {
+  return _then(_self.copyWith(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Country?,nsn: null == nsn ? _self.nsn : nsn // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PhoneEditingValueImplCopyWith<$Res>
-    implements $PhoneEditingValueCopyWith<$Res> {
-  factory _$$PhoneEditingValueImplCopyWith(
-    _$PhoneEditingValueImpl value,
-    $Res Function(_$PhoneEditingValueImpl) then,
-  ) = __$$PhoneEditingValueImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Country? country, String nsn});
 }
 
-/// @nodoc
-class __$$PhoneEditingValueImplCopyWithImpl<$Res>
-    extends _$PhoneEditingValueCopyWithImpl<$Res, _$PhoneEditingValueImpl>
-    implements _$$PhoneEditingValueImplCopyWith<$Res> {
-  __$$PhoneEditingValueImplCopyWithImpl(
-    _$PhoneEditingValueImpl _value,
-    $Res Function(_$PhoneEditingValueImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of PhoneEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? country = freezed, Object? nsn = null}) {
-    return _then(
-      _$PhoneEditingValueImpl(
-        country:
-            freezed == country
-                ? _value.country
-                : country // ignore: cast_nullable_to_non_nullable
-                    as Country?,
-        nsn:
-            null == nsn
-                ? _value.nsn
-                : nsn // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$PhoneEditingValueImpl extends _PhoneEditingValue {
-  const _$PhoneEditingValueImpl({this.country, this.nsn = ''}) : super._();
 
-  @override
-  final Country? country;
-  @override
-  @JsonKey()
-  final String nsn;
+class _PhoneEditingValue extends PhoneEditingValue {
+  const _PhoneEditingValue({this.country, this.nsn = ''}): super._();
+  
 
-  @override
-  String toString() {
-    return 'PhoneEditingValue(country: $country, nsn: $nsn)';
-  }
+@override final  Country? country;
+@override@JsonKey() final  String nsn;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PhoneEditingValueImpl &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.nsn, nsn) || other.nsn == nsn));
-  }
+/// Create a copy of PhoneEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PhoneEditingValueCopyWith<_PhoneEditingValue> get copyWith => __$PhoneEditingValueCopyWithImpl<_PhoneEditingValue>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, country, nsn);
 
-  /// Create a copy of PhoneEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PhoneEditingValueImplCopyWith<_$PhoneEditingValueImpl> get copyWith =>
-      __$$PhoneEditingValueImplCopyWithImpl<_$PhoneEditingValueImpl>(
-        this,
-        _$identity,
-      );
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PhoneEditingValue&&(identical(other.country, country) || other.country == country)&&(identical(other.nsn, nsn) || other.nsn == nsn));
 }
 
-abstract class _PhoneEditingValue extends PhoneEditingValue {
-  const factory _PhoneEditingValue({final Country? country, final String nsn}) =
-      _$PhoneEditingValueImpl;
-  const _PhoneEditingValue._() : super._();
 
-  @override
-  Country? get country;
-  @override
-  String get nsn;
+@override
+int get hashCode => Object.hash(runtimeType,country,nsn);
 
-  /// Create a copy of PhoneEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PhoneEditingValueImplCopyWith<_$PhoneEditingValueImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'PhoneEditingValue(country: $country, nsn: $nsn)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PhoneEditingValueCopyWith<$Res> implements $PhoneEditingValueCopyWith<$Res> {
+  factory _$PhoneEditingValueCopyWith(_PhoneEditingValue value, $Res Function(_PhoneEditingValue) _then) = __$PhoneEditingValueCopyWithImpl;
+@override @useResult
+$Res call({
+ Country? country, String nsn
+});
+
+
+
+
+}
+/// @nodoc
+class __$PhoneEditingValueCopyWithImpl<$Res>
+    implements _$PhoneEditingValueCopyWith<$Res> {
+  __$PhoneEditingValueCopyWithImpl(this._self, this._then);
+
+  final _PhoneEditingValue _self;
+  final $Res Function(_PhoneEditingValue) _then;
+
+/// Create a copy of PhoneEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? country = freezed,Object? nsn = null,}) {
+  return _then(_PhoneEditingValue(
+country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Country?,nsn: null == nsn ? _self.nsn : nsn // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

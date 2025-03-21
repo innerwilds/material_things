@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: dart_things
-      sha256: db3778bcfdbae42c4cf919d4109ff40c1f42162c55230a76cc55a9fa68376887
+      sha256: "0d5ac943c6b4bb27011a4d4c6dc368feb441e827801d067c54b8ab5dd4bfdaf3"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.1"
+    version: "0.8.2"
   device_info_plus:
     dependency: transitive
     description:
@@ -119,10 +119,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_things
-      sha256: ef6d43075281f215cb5885deefdd82ca3d9e234c1a77b62009cbf58a55292ec9
+      sha256: e30b13e26b68fca6b29769621b22ebd3db0af7ebfc6963a8612656ea54f3ac3a
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.5"
+    version: "0.8.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -198,7 +198,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.4.2"
+    version: "0.4.3"
   meta:
     dependency: transitive
     description:

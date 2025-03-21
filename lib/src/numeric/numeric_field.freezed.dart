@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,240 +10,154 @@ part of 'numeric_field.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$NumericEditingValue {
-  /// Whether input is valid.
-  ///
-  /// Gaps in cells is about invalid input, example: [1] [empty] [2].
-  /// In this case [number] will be null.
-  bool get isValid => throw _privateConstructorUsedError;
 
-  /// Length of a [number]. Will be zero, if [isValid] is true.
-  int get length => throw _privateConstructorUsedError;
+/// Whether input is valid.
+///
+/// Gaps in cells is about invalid input, example: [1] [empty] [2].
+/// In this case [number] will be null.
+ bool get isValid;/// Length of a [number]. Will be zero, if [isValid] is true.
+ int get length;/// Null if [isValid] is true or if there is not any input.
+ BigInt? get number; int get focusedDigit;
+/// Create a copy of NumericEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NumericEditingValueCopyWith<NumericEditingValue> get copyWith => _$NumericEditingValueCopyWithImpl<NumericEditingValue>(this as NumericEditingValue, _$identity);
 
-  /// Null if [isValid] is true or if there is not any input.
-  BigInt? get number => throw _privateConstructorUsedError;
-  int get focusedDigit => throw _privateConstructorUsedError;
 
-  /// Create a copy of NumericEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $NumericEditingValueCopyWith<NumericEditingValue> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NumericEditingValue&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.length, length) || other.length == length)&&(identical(other.number, number) || other.number == number)&&(identical(other.focusedDigit, focusedDigit) || other.focusedDigit == focusedDigit));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isValid,length,number,focusedDigit);
+
+@override
+String toString() {
+  return 'NumericEditingValue(isValid: $isValid, length: $length, number: $number, focusedDigit: $focusedDigit)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $NumericEditingValueCopyWith<$Res> {
-  factory $NumericEditingValueCopyWith(
-    NumericEditingValue value,
-    $Res Function(NumericEditingValue) then,
-  ) = _$NumericEditingValueCopyWithImpl<$Res, NumericEditingValue>;
-  @useResult
-  $Res call({bool isValid, int length, BigInt? number, int focusedDigit});
-}
+abstract mixin class $NumericEditingValueCopyWith<$Res>  {
+  factory $NumericEditingValueCopyWith(NumericEditingValue value, $Res Function(NumericEditingValue) _then) = _$NumericEditingValueCopyWithImpl;
+@useResult
+$Res call({
+ bool isValid, int length, BigInt? number, int focusedDigit
+});
 
+
+
+
+}
 /// @nodoc
-class _$NumericEditingValueCopyWithImpl<$Res, $Val extends NumericEditingValue>
+class _$NumericEditingValueCopyWithImpl<$Res>
     implements $NumericEditingValueCopyWith<$Res> {
-  _$NumericEditingValueCopyWithImpl(this._value, this._then);
+  _$NumericEditingValueCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final NumericEditingValue _self;
+  final $Res Function(NumericEditingValue) _then;
 
-  /// Create a copy of NumericEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isValid = null,
-    Object? length = null,
-    Object? number = freezed,
-    Object? focusedDigit = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            isValid:
-                null == isValid
-                    ? _value.isValid
-                    : isValid // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            length:
-                null == length
-                    ? _value.length
-                    : length // ignore: cast_nullable_to_non_nullable
-                        as int,
-            number:
-                freezed == number
-                    ? _value.number
-                    : number // ignore: cast_nullable_to_non_nullable
-                        as BigInt?,
-            focusedDigit:
-                null == focusedDigit
-                    ? _value.focusedDigit
-                    : focusedDigit // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of NumericEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isValid = null,Object? length = null,Object? number = freezed,Object? focusedDigit = null,}) {
+  return _then(_self.copyWith(
+isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,length: null == length ? _self.length : length // ignore: cast_nullable_to_non_nullable
+as int,number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as BigInt?,focusedDigit: null == focusedDigit ? _self.focusedDigit : focusedDigit // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$NumericEditingValueImplCopyWith<$Res>
-    implements $NumericEditingValueCopyWith<$Res> {
-  factory _$$NumericEditingValueImplCopyWith(
-    _$NumericEditingValueImpl value,
-    $Res Function(_$NumericEditingValueImpl) then,
-  ) = __$$NumericEditingValueImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isValid, int length, BigInt? number, int focusedDigit});
 }
 
-/// @nodoc
-class __$$NumericEditingValueImplCopyWithImpl<$Res>
-    extends _$NumericEditingValueCopyWithImpl<$Res, _$NumericEditingValueImpl>
-    implements _$$NumericEditingValueImplCopyWith<$Res> {
-  __$$NumericEditingValueImplCopyWithImpl(
-    _$NumericEditingValueImpl _value,
-    $Res Function(_$NumericEditingValueImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NumericEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isValid = null,
-    Object? length = null,
-    Object? number = freezed,
-    Object? focusedDigit = null,
-  }) {
-    return _then(
-      _$NumericEditingValueImpl(
-        isValid:
-            null == isValid
-                ? _value.isValid
-                : isValid // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        length:
-            null == length
-                ? _value.length
-                : length // ignore: cast_nullable_to_non_nullable
-                    as int,
-        number:
-            freezed == number
-                ? _value.number
-                : number // ignore: cast_nullable_to_non_nullable
-                    as BigInt?,
-        focusedDigit:
-            null == focusedDigit
-                ? _value.focusedDigit
-                : focusedDigit // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$NumericEditingValueImpl implements _NumericEditingValue {
-  const _$NumericEditingValueImpl({
-    required this.isValid,
-    required this.length,
-    this.number,
-    this.focusedDigit = -1,
-  });
 
-  /// Whether input is valid.
-  ///
-  /// Gaps in cells is about invalid input, example: [1] [empty] [2].
-  /// In this case [number] will be null.
-  @override
-  final bool isValid;
+class _NumericEditingValue implements NumericEditingValue {
+  const _NumericEditingValue({required this.isValid, required this.length, this.number, this.focusedDigit = -1});
+  
 
-  /// Length of a [number]. Will be zero, if [isValid] is true.
-  @override
-  final int length;
+/// Whether input is valid.
+///
+/// Gaps in cells is about invalid input, example: [1] [empty] [2].
+/// In this case [number] will be null.
+@override final  bool isValid;
+/// Length of a [number]. Will be zero, if [isValid] is true.
+@override final  int length;
+/// Null if [isValid] is true or if there is not any input.
+@override final  BigInt? number;
+@override@JsonKey() final  int focusedDigit;
 
-  /// Null if [isValid] is true or if there is not any input.
-  @override
-  final BigInt? number;
-  @override
-  @JsonKey()
-  final int focusedDigit;
+/// Create a copy of NumericEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NumericEditingValueCopyWith<_NumericEditingValue> get copyWith => __$NumericEditingValueCopyWithImpl<_NumericEditingValue>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'NumericEditingValue(isValid: $isValid, length: $length, number: $number, focusedDigit: $focusedDigit)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NumericEditingValueImpl &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) &&
-            (identical(other.length, length) || other.length == length) &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.focusedDigit, focusedDigit) ||
-                other.focusedDigit == focusedDigit));
-  }
 
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, isValid, length, number, focusedDigit);
-
-  /// Create a copy of NumericEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NumericEditingValueImplCopyWith<_$NumericEditingValueImpl> get copyWith =>
-      __$$NumericEditingValueImplCopyWithImpl<_$NumericEditingValueImpl>(
-        this,
-        _$identity,
-      );
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NumericEditingValue&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.length, length) || other.length == length)&&(identical(other.number, number) || other.number == number)&&(identical(other.focusedDigit, focusedDigit) || other.focusedDigit == focusedDigit));
 }
 
-abstract class _NumericEditingValue implements NumericEditingValue {
-  const factory _NumericEditingValue({
-    required final bool isValid,
-    required final int length,
-    final BigInt? number,
-    final int focusedDigit,
-  }) = _$NumericEditingValueImpl;
 
-  /// Whether input is valid.
-  ///
-  /// Gaps in cells is about invalid input, example: [1] [empty] [2].
-  /// In this case [number] will be null.
-  @override
-  bool get isValid;
+@override
+int get hashCode => Object.hash(runtimeType,isValid,length,number,focusedDigit);
 
-  /// Length of a [number]. Will be zero, if [isValid] is true.
-  @override
-  int get length;
-
-  /// Null if [isValid] is true or if there is not any input.
-  @override
-  BigInt? get number;
-  @override
-  int get focusedDigit;
-
-  /// Create a copy of NumericEditingValue
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NumericEditingValueImplCopyWith<_$NumericEditingValueImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'NumericEditingValue(isValid: $isValid, length: $length, number: $number, focusedDigit: $focusedDigit)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$NumericEditingValueCopyWith<$Res> implements $NumericEditingValueCopyWith<$Res> {
+  factory _$NumericEditingValueCopyWith(_NumericEditingValue value, $Res Function(_NumericEditingValue) _then) = __$NumericEditingValueCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isValid, int length, BigInt? number, int focusedDigit
+});
+
+
+
+
+}
+/// @nodoc
+class __$NumericEditingValueCopyWithImpl<$Res>
+    implements _$NumericEditingValueCopyWith<$Res> {
+  __$NumericEditingValueCopyWithImpl(this._self, this._then);
+
+  final _NumericEditingValue _self;
+  final $Res Function(_NumericEditingValue) _then;
+
+/// Create a copy of NumericEditingValue
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isValid = null,Object? length = null,Object? number = freezed,Object? focusedDigit = null,}) {
+  return _then(_NumericEditingValue(
+isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,length: null == length ? _self.length : length // ignore: cast_nullable_to_non_nullable
+as int,number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as BigInt?,focusedDigit: null == focusedDigit ? _self.focusedDigit : focusedDigit // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+// dart format on

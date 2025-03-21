@@ -10,6 +10,10 @@ abstract class MaterialThingsLocalizations {
   /// available.
   String get chooseACountry;
 
+  /// Will be in select_country_page in title, before search field will be
+  /// available.
+  String get chooseALocale;
+
   /// Hint text for a search field in select_country_page.
   String get search;
 
@@ -34,6 +38,9 @@ final class _MaterialThingsLocalizationsEn
 
   @override
   String get chooseACountry => 'Choose a country';
+
+  @override
+  String get chooseALocale => 'Choose a locale';
 
   @override
   String get search => 'Search';

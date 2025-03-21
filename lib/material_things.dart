@@ -1,5 +1,4 @@
 export 'src/auto_animated_icon.dart';
-export 'src/card_action.dart';
 export 'src/countries/countries.dart';
 export 'src/countries/country_button.dart';
 export 'src/countries/country_editing_controller.dart';
@@ -9,6 +8,12 @@ export 'src/countries/select_country_page.dart';
 export 'src/described.dart';
 export 'src/described_theme.dart';
 export 'src/expandable.dart';
+export 'src/locales/locale.dart';
+export 'src/locales/locale_button.dart';
+export 'src/locales/locale_editing_controller.dart';
+export 'src/locales/locales.dart';
+export 'src/locales/restorable_locale_editing_controller.dart';
+export 'src/locales/select_locale_page.dart';
 export 'src/material_things_localizations.dart';
 export 'src/numeric/numeric_field.dart';
 export 'src/numeric/numeric_field_theme.dart';

@@ -252,8 +252,6 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
       style: textStyle,
       enabled: widget.enabled,
       keyboardType: widget.keyboardType,
-      maxLines: 1,
-      type: CountryFieldType.plusSignPrefixedPhoneCode,
       onChanged: _countryFieldChange,
       onSubmitted: _countryFieldSubmitted,
       controller: _countryProxyController,
@@ -287,7 +285,6 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
         ),
         restorationId: 'nsn',
         autocorrect: false,
-        maxLines: 1,
         controller: _nsnProxyController,
         onSubmitted: _nsnFieldSubmitted,
         onChanged: _nsnFieldChange,
@@ -296,7 +293,6 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
                 ? value.country?.format?.length ?? widget.maxNsnLength
                 : widget.maxNsnLength,
         spellCheckConfiguration: widget.spellCheckConfiguration,
-        minLines: null,
         focusNode: widget.focusNode,
         enabled: widget.enabled,
         keyboardType: widget.keyboardType,
@@ -353,7 +349,7 @@ class _PhoneFieldState extends State<PhoneField> with RestorationMixin {
 }
 
 @freezed
-class PhoneEditingValue with _$PhoneEditingValue {
+abstract class PhoneEditingValue with _$PhoneEditingValue {
   const factory PhoneEditingValue({Country? country, @Default('') String nsn}) =
       _PhoneEditingValue;
   const PhoneEditingValue._();

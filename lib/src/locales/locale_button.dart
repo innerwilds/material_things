@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:material_things/src/internal/field_button.dart';
+import 'package:material_things/src/locales/locale.dart';
 
-import 'countries.dart';
-import 'country_editing_controller.dart';
+import 'locales.dart';
+import 'locale_editing_controller.dart';
 
-/// Shows currently selected country from [CountryEditingController] as a
+/// Shows currently selected country from [LocaleEditingController] as a
 /// [TextField] using [InputDecorator] and makes it tappable as a [InkWell].
-class CountryButton extends StatefulWidget {
-  const CountryButton({
+class LocaleButton extends StatefulWidget {
+  const LocaleButton({
     required this.onTap,
     super.key,
-    this.country,
+    this.locale,
     this.controller,
     this.focusNode,
     this.decoration = const InputDecoration(
       border: OutlineInputBorder(),
       suffixIcon: Icon(Icons.arrow_forward_ios_rounded),
     ),
-    this.additionalCountries,
+    this.additionalLocales,
   }) : assert(
-         country == null || controller == null,
+         locale == null || controller == null,
          'You can use either controller or country, not both',
        );
 
@@ -29,27 +30,27 @@ class CountryButton extends StatefulWidget {
   final InputDecoration decoration;
 
   /// Country to show.
-  final Country? country;
+  final ExtendedLocale? locale;
 
   /// Controller with country to show with listening.
   ///
   /// The country will be not set automatically via controller,
   /// because it is just a button.
-  final CountryEditingController? controller;
+  final LocaleEditingController? controller;
 
   /// Additional countries to be show as flags.
-  final List<Country>? additionalCountries;
+  final List<ExtendedLocale>? additionalLocales;
 
   /// Will be called when user taps on text field (button).
   final void Function() onTap;
 
   @override
-  State<CountryButton> createState() => _CountryButtonState();
+  State<LocaleButton> createState() => _LocaleButtonState();
 }
 
-class _CountryButtonState extends State<CountryButton> {
-  Country? get _country =>
-      widget.controller != null ? widget.controller!.country : widget.country;
+class _LocaleButtonState extends State<LocaleButton> {
+  ExtendedLocale? get _locale =>
+      widget.controller != null ? widget.controller!.locale : widget.locale;
 
   FocusNode? _localFocusNode;
   FocusNode get focusNode {
@@ -83,39 +84,44 @@ class _CountryButtonState extends State<CountryButton> {
 
   @override
   Widget build(BuildContext context) {
-    final aCountries = widget.additionalCountries;
+    final aLocales = widget.additionalLocales;
 
     return FieldButton(
-      isEmpty: _country == null,
+      isEmpty: _locale == null,
       decoration: widget.decoration,
       icon: AnimatedSwitcher(
         duration: kThemeAnimationDuration,
         child: Stack(
           clipBehavior: Clip.none,
-          key: ValueKey(_country?.emoji),
+          key: ValueKey(_locale?.countryEmoji),
           fit: StackFit.passthrough,
           alignment: Alignment.center,
           children: [
-            if (aCountries != null)
-              for (var i = aCountries.length ~/ 2 - 1; i > -1; i--)
-                Positioned(
-                  left: -(i + 1).toDouble() * 5,
-                  top: -(i + 1).toDouble() * 5,
-                  child: Text(aCountries[i].emoji, textAlign: TextAlign.center),
-                ),
-            if (aCountries != null)
-              for (var i = aCountries.length - 1; i > -1; i--)
-                Positioned(
-                  left: (i - aCountries.length ~/ 2 + 1).toDouble() * 5,
-                  top: (i - aCountries.length ~/ 2 + 1).toDouble() * 5,
-                  child: Text(aCountries[i].emoji, textAlign: TextAlign.center),
-                ),
-            Text(_country?.emoji ?? '🏴‍☠️', textAlign: TextAlign.center),
+            if (aLocales != null)
+              for (var i = aLocales.length ~/ 2 - 1; i > -1; i--)
+                if (aLocales[i].countryCode != null)
+                  Positioned(
+                    left: -(i + 1).toDouble() * 5,
+                    top: -(i + 1).toDouble() * 5,
+                    child: Text(
+                      aLocales[i].countryEmoji!,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+            if (aLocales != null)
+              for (var i = aLocales.length - 1; i > -1; i--)
+                if (aLocales[i].countryCode != null)
+                  Positioned(
+                    left: (i - aLocales.length ~/ 2 + 1).toDouble() * 5,
+                    top: (i - aLocales.length ~/ 2 + 1).toDouble() * 5,
+                    child: Text(aLocales[i].countryEmoji!, textAlign: TextAlign.center),
+                  ),
+            Text(_locale?.countryEmoji ?? '🏴‍', textAlign: TextAlign.center),
           ],
         ),
       ),
       onTap: widget.onTap,
-      child: Text(_country?.fullName ?? ' '),
+      child: Text(_locale?.nameLocal ?? ''),
     );
   }
 }

@@ -23,7 +23,7 @@ abstract final class AssetCountries {
 }
 
 @Freezed(toJson: false, equal: false, copyWith: false, fromJson: false)
-class Country with _$Country {
+abstract class Country with _$Country {
   /// You need to provide upper cased [twoLetterCode].
   const factory Country(
     int phoneCountryCode,
@@ -38,7 +38,7 @@ class Country with _$Country {
     return Country(int.parse(a), b, c, rest.firstOrNull);
   }
 
-  String get emoji => _countryCodeEmoji(twoLetterCode);
+  String get emoji => countryCodeToEmoji(twoLetterCode);
 
   String toRow() =>
       '$phoneCountryCode;$twoLetterCode;$fullName;${format ?? ''}';
@@ -52,7 +52,7 @@ class Country with _$Country {
   int get hashCode => twoLetterCode.hashCode;
 }
 
-String _countryCodeEmoji(String cc) {
+String countryCodeToEmoji(String cc) {
   final codePoints = cc.codeUnits.map((c) => c + 127397);
   return String.fromCharCodes(codePoints);
 }
