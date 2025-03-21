@@ -12,8 +12,11 @@ dependencies:
   freezed_annotation: ^3.0.0
   collection: ^1.19.1
   user_country_detector_android: ^0.0.1
-  flutter_things: ^0.6.5
-  dart_things: ^0.8.1
+
+  # We depend only on stable things like VertGap.
+  flutter_things: any
+  # We depend only on stable things like newLineRegExp and List<T>.regenerate.
+  dart_things: any
 
 dev_dependencies:
   freezed: ^3.0.4
