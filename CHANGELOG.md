@@ -21,3 +21,6 @@ Upgraded flutter things
 
 ## 0.4.2
 Deps upgrade, fixes, refactoring.
+
+## 0.4.3
+*_things version set to any, because of use of stable APIs.
