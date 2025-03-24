@@ -55,10 +55,13 @@ class ScaffoldSelectAnyPage<T> extends StatefulWidget {
     this.restorationId,
     this.searchController,
     this.restrictMode = RestrictMode.nonInteractive,
+    this.canPop = true,
   }) : assert(
          useDivider == false || mayPlaceDivider != null,
          'useDivider is true, so mayPlaceDivider must be provided',
        );
+
+  final bool canPop;
 
   final void Function(T) onPeek;
 
@@ -161,20 +164,23 @@ class _ScaffoldSelectAnyPageState<T> extends State<ScaffoldSelectAnyPage<T>> {
         MaterialThingsLocalizations.builtInEn;
 
     final itemsCount = _itemsCount;
+    final canPop = widget.canPop || Navigator.canPop(context);
+    final showBackButton = canPop || _searchModeEnabled;
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
+        automaticallyImplyLeading: false,
+        leading: showBackButton ? BackButton(
           onPressed: () {
             if (_searchModeEnabled) {
               setState(() {
                 _searchModeEnabled = false;
               });
-            } else {
+            } else if (canPop) {
               Navigator.pop(context);
             }
           },
-        ),
+        ) : null,
         title: AnimatedSwitcher(
           duration: const Duration(milliseconds: 120),
           child:
