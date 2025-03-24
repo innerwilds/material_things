@@ -48,6 +48,7 @@ class ScaffoldSelectAnyPage<T> extends StatefulWidget {
     required this.itemsCount,
     required this.whereFitsSearchKeywords,
     required this.pageTitle,
+    required this.onPeek,
     super.key,
     this.useDivider = false,
     this.mayPlaceDivider,
@@ -58,6 +59,8 @@ class ScaffoldSelectAnyPage<T> extends StatefulWidget {
          useDivider == false || mayPlaceDivider != null,
          'useDivider is true, so mayPlaceDivider must be provided',
        );
+
+  final void Function(T) onPeek;
 
   final String? restorationId;
 
@@ -119,7 +122,7 @@ class _ScaffoldSelectAnyPageState<T> extends State<ScaffoldSelectAnyPage<T>> {
   }
 
   void _handleTap(T something) {
-    Navigator.pop(context, something);
+    widget.onPeek(something);
   }
 
   @override

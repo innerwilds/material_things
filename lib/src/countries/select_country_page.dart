@@ -15,14 +15,17 @@ enum RestrictMode {
 /// Select country page crafted using Material 3.
 ///
 /// It will return using Navigator.pop() a selected country.
-class SelectCountryPage extends StatefulWidget {
+class SelectCountryPage extends StatelessWidget {
   const SelectCountryPage({
     required this.countries,
+    required this.onPeek,
     super.key,
     this.searchController,
     this.restrictedCountries,
     this.restrictMode = RestrictMode.disableChoose,
   });
+
+  final void Function(Country) onPeek;
 
   /// [TextEditingController] to use within search field.
   final TextEditingController? searchController;
@@ -39,38 +42,34 @@ class SelectCountryPage extends StatefulWidget {
   final RestrictMode restrictMode;
 
   @override
-  State<SelectCountryPage> createState() => _SelectCountryPageState();
-}
-
-class _SelectCountryPageState extends State<SelectCountryPage> {
-  @override
   Widget build(BuildContext context) {
     final ls =
         MaterialThingsLocalizations.maybeOf(context) ??
         MaterialThingsLocalizations.builtInEn;
     return ScaffoldSelectAnyPage<Country>(
+      onPeek: onPeek,
       pageTitle: Text(ls.chooseACountry),
       buildItem: (context, idx) {
-        final country = widget.countries[idx];
+        final country = countries[idx];
         return SearchItem(
           title: Text(country.fullName),
           leading: Text(country.emoji),
           value: country,
-          restrictionReason: widget.restrictedCountries?[country],
+          restrictionReason: restrictedCountries?[country],
         );
       },
-      itemsCount: widget.countries.length,
+      itemsCount: countries.length,
       whereFitsSearchKeywords: (terms) {
         final lowered = terms.toLowerCase();
         return [
-          for (final (idx, country) in widget.countries.indexed)
+          for (final (idx, country) in countries.indexed)
             if (country.fullName.toLowerCase().startsWith(lowered)) idx,
         ];
       },
       useDivider: true,
       mayPlaceDivider: (idx, nextIdx) {
-        final currentCountry = widget.countries[idx];
-        final nextCountry = nextIdx == null ? null : widget.countries[nextIdx];
+        final currentCountry = countries[idx];
+        final nextCountry = nextIdx == null ? null : countries[nextIdx];
 
         if (nextCountry?.fullName.characters.toLowerCase().first !=
             currentCountry.fullName.characters.toLowerCase().first) {
