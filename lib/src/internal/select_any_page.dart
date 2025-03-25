@@ -1,4 +1,5 @@
 import 'package:dart_things/coliseum.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:material_things/material_things.dart';
@@ -95,7 +96,7 @@ class ScaffoldSelectAnyPage<T> extends StatefulWidget {
 }
 
 class _ScaffoldSelectAnyPageState<T> extends State<ScaffoldSelectAnyPage<T>> {
-  bool _searchModeEnabled = false;
+  final searchVisibilityController = ValueNotifier(false);
 
   List<int>? _filteredCountries;
 
@@ -159,88 +160,17 @@ class _ScaffoldSelectAnyPageState<T> extends State<ScaffoldSelectAnyPage<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final ls =
-        MaterialThingsLocalizations.maybeOf(context) ??
-        MaterialThingsLocalizations.builtInEn;
-
     final itemsCount = _itemsCount;
-    final canPop = widget.canPop || Navigator.canPop(context);
-    final showBackButton = canPop || _searchModeEnabled;
 
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: showBackButton ? BackButton(
-          onPressed: () {
-            if (_searchModeEnabled) {
-              setState(() {
-                _searchModeEnabled = false;
-              });
-            } else if (canPop) {
-              Navigator.pop(context);
-            }
-          },
-        ) : null,
-        title: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 120),
-          child:
-              _searchModeEnabled
-                  ? Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: widget.searchController,
-                          onChanged:
-                              widget.searchController == null
-                                  ? _handleInternalSearchFieldChange
-                                  : null,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: ls.search,
-                          ),
-                        ),
-                      ),
-                      if (widget.searchController != null)
-                        ListenableBuilder(
-                          listenable: widget.searchController!,
-                          builder: (context, child) {
-                            return AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 120),
-                              child:
-                                  widget.searchController!.text.isEmpty
-                                      ? null
-                                      : IconButton(
-                                        visualDensity: VisualDensity.compact,
-                                        onPressed:
-                                            widget.searchController!.clear,
-                                        icon: const Icon(Icons.clear),
-                                      ),
-                            );
-                          },
-                        ),
-                    ],
-                  )
-                  : widget.pageTitle,
-        ),
-        actions: [
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 120),
-            child:
-                _searchModeEnabled
-                    ? null
-                    : IconButton(
-                      onPressed:
-                          () => setState(() {
-                            _searchModeEnabled = true;
-                          }),
-                      icon: const Icon(Icons.search),
-                    ),
-          ),
-        ],
+    return SliverScaffold(
+      appBar: _SearchAppBar(
+        searchVisibilityController: searchVisibilityController,
+        onSearchChange: _handleInternalSearchFieldChange,
+        searchController: widget.searchController,
+        title: widget.pageTitle,
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 120),
-        child: ListView.separated(
+      body: [
+        SliverList.separated(
           itemCount: itemsCount,
           separatorBuilder: (context, idx) {
             final currentIdx = _itemIdx(idx);
@@ -286,7 +216,168 @@ class _ScaffoldSelectAnyPageState<T> extends State<ScaffoldSelectAnyPage<T>> {
             );
           },
         ),
-      ),
+      ],
+    );
+  }
+}
+
+class _SearchAppBar extends StatefulWidget {
+  const _SearchAppBar({
+    super.key,
+    required this.searchVisibilityController,
+    this.searchController,
+    required this.onSearchChange,
+    required this.title,
+  });
+
+  final Widget title;
+  final TextEditingController? searchController;
+  final ValueNotifier<bool> searchVisibilityController;
+  final void Function(String) onSearchChange;
+
+  @override
+  State<_SearchAppBar> createState() => _SearchAppBarState();
+}
+
+class _SearchAppBarState extends State<_SearchAppBar> {
+  void showSearch() {
+    widget.searchVisibilityController.value = true;
+  }
+
+  void closeSearch() {
+    widget.searchVisibilityController.value = false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final canPop = Navigator.of(context).canPop();
+    return ValueListenableBuilder(
+      valueListenable: widget.searchVisibilityController,
+      builder: (context, visible, _) {
+        final showBackButton = canPop || visible;
+        final ls =
+            MaterialThingsLocalizations.maybeOf(context) ??
+            MaterialThingsLocalizations.builtInEn;
+
+        final Widget? flexibleSpaceBar;
+
+        final Widget? searchField;
+
+        if (visible) {
+          searchField = ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 300,
+            ),
+            child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: TextFormField(
+                          controller: widget.searchController,
+                          autofocus: true,
+                          onChanged:
+                              widget.searchController == null
+                                  ? widget.onSearchChange
+                                  : null,
+                          decoration: InputDecoration(
+                            border: switch(defaultTargetPlatform) {
+                              TargetPlatform.android ||
+                              TargetPlatform.fuchsia ||
+                              TargetPlatform.iOS => const UnderlineInputBorder(),
+                              TargetPlatform.linux ||
+                              TargetPlatform.macOS ||
+                              TargetPlatform.windows => InputBorder.none,
+                            },
+                            hintText: ls.search,
+                          ),
+                        ),
+                      ),
+                      if (widget.searchController != null)
+                        ListenableBuilder(
+                          listenable: widget.searchController!,
+                          builder: (context, child) {
+                            return AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 120),
+                              child:
+                                  widget.searchController!.text.isEmpty
+                                      ? null
+                                      : IconButton(
+                                        visualDensity: VisualDensity.compact,
+                                        onPressed: widget.searchController!.clear,
+                                        icon: const Icon(Icons.clear),
+                                      ),
+                            );
+                          },
+                        ),
+                    ],
+                  ),
+          );
+        } else {
+          searchField = null;
+        }
+
+        if (visible) {
+          flexibleSpaceBar = switch (defaultTargetPlatform) {
+            TargetPlatform.android ||
+            TargetPlatform.fuchsia ||
+            TargetPlatform
+                .iOS => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: FlexibleSpaceBar(centerTitle: true, title: searchField),
+                ),
+            TargetPlatform.linux => null,
+            TargetPlatform.macOS => null,
+            TargetPlatform.windows => null,
+          };
+        } else {
+          flexibleSpaceBar = FlexibleSpaceBar(
+            centerTitle: true,
+            title: widget.title,
+          );
+        }
+
+        return SliverAppBar(
+          automaticallyImplyLeading: false,
+          leading:
+              showBackButton
+                  ? BackButton(
+                    onPressed: () {
+                      if (visible) {
+                        closeSearch();
+                      } else if (canPop) {
+                        Navigator.pop(context);
+                      }
+                    },
+                  )
+                  : null,
+          expandedHeight: switch (defaultTargetPlatform) {
+            TargetPlatform.android ||
+            TargetPlatform.fuchsia ||
+            TargetPlatform.iOS => MediaQuery.sizeOf(context).height / 4,
+            TargetPlatform.linux => null,
+            TargetPlatform.macOS => null,
+            TargetPlatform.windows => null,
+          },
+          pinned: true,
+          flexibleSpace: flexibleSpaceBar,
+          title: flexibleSpaceBar == null ? searchField : null,
+          actions: [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 120),
+              child:
+                  visible
+                      ? null
+                      : IconButton(
+                        onPressed: showSearch,
+                        icon: const Icon(Icons.search),
+                      ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

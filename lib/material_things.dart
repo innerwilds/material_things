@@ -19,4 +19,5 @@ export 'src/numeric/numeric_field.dart';
 export 'src/numeric/numeric_field_theme.dart';
 export 'src/phone_field.dart';
 export 'src/restorable_phone_editing_controller.dart';
+export 'src/sliver/sliver_scaffold.dart';
 export 'src/snackbar_action_fix.dart';

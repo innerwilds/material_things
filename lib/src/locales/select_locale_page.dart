@@ -10,6 +10,7 @@ class SelectLocalePage extends StatelessWidget {
   const SelectLocalePage({
     required this.locales,
     required this.onPeek,
+    this.canPop = true,
     super.key,
     this.searchController,
   });
@@ -24,6 +25,8 @@ class SelectLocalePage extends StatelessWidget {
   /// To restrict countries from usage use [restrict].
   final List<ExtendedLocale> locales;
 
+  final bool canPop;
+
   @override
   Widget build(BuildContext context) {
     final ls =
@@ -31,6 +34,7 @@ class SelectLocalePage extends StatelessWidget {
         MaterialThingsLocalizations.builtInEn;
     return ScaffoldSelectAnyPage<ExtendedLocale>(
       onPeek: onPeek,
+      canPop: canPop,
       pageTitle: Text(ls.chooseALocale),
       buildItem: (context, idx) {
         final locale = locales[idx];

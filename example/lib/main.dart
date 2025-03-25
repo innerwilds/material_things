@@ -83,11 +83,14 @@ class _CountriesPreviewState extends State<CountriesPreview> {
                 labelText: 'Your phone country',
               ),
               onTap: () async {
-                final country = await Navigator.push(
-                  context,
+                final nav = Navigator.of(context);
+                final country = await nav.push(
                   MaterialPageRoute(
                     builder: (context) {
                       return SelectCountryPage(
+                        onPeek: (_) {
+                          nav.pop();
+                        },
                         countries: countries,
                         restrictedCountries: {
                           const Country(1, 'US', 'United States'):
@@ -152,11 +155,14 @@ class _LocalesPreviewState extends State<LocalesPreview> {
                 labelText: 'App locale',
               ),
               onTap: () async {
-                final locale = await Navigator.push(
-                  context,
+                final nav = Navigator.of(context);
+                final locale = await nav.push(
                   MaterialPageRoute(
                     builder: (context) {
                       return SelectLocalePage(
+                        onPeek: (_) {
+                          nav.pop();
+                        },
                         locales: locales,
                       );
                     },

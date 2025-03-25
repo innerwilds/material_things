@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:material_things/material_things.dart';
 import 'package:material_things/src/internal/select_any_page.dart';
@@ -20,6 +19,7 @@ class SelectCountryPage extends StatelessWidget {
     required this.countries,
     required this.onPeek,
     super.key,
+    this.canPop = true,
     this.searchController,
     this.restrictedCountries,
     this.restrictMode = RestrictMode.disableChoose,
@@ -41,6 +41,8 @@ class SelectCountryPage extends StatelessWidget {
   /// Restricted mode.
   final RestrictMode restrictMode;
 
+  final bool canPop;
+
   @override
   Widget build(BuildContext context) {
     final ls =
@@ -48,6 +50,7 @@ class SelectCountryPage extends StatelessWidget {
         MaterialThingsLocalizations.builtInEn;
     return ScaffoldSelectAnyPage<Country>(
       onPeek: onPeek,
+      canPop: canPop,
       pageTitle: Text(ls.chooseACountry),
       buildItem: (context, idx) {
         final country = countries[idx];
