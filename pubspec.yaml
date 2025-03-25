@@ -10,14 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   freezed_annotation: ^3.0.0
   collection: ^1.19.1
   user_country_detector_android: ^0.0.1
 
-  # We depend only on stable things like VertGap.
-  flutter_things: any
-  # We depend only on stable things like newLineRegExp and List<T>.regenerate.
-  dart_things: any
+  flutter_things:
+    git: https://github.com/innerwilds/flutter_things
+  dart_things:
+    git: https://github.com/innerwilds/dart_things
 
 dev_dependencies:
   freezed: ^3.0.4

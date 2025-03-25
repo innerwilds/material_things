@@ -52,11 +52,12 @@ packages:
   dart_things:
     dependency: transitive
     description:
-      name: dart_things
-      sha256: "0d5ac943c6b4bb27011a4d4c6dc368feb441e827801d067c54b8ab5dd4bfdaf3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.2"
+      path: "."
+      ref: HEAD
+      resolved-ref: "42abe29c85a46683e0679f76b2b2cb5deba8e9ad"
+      url: "https://github.com/innerwilds/dart_things"
+    source: git
+    version: "0.9.1"
   device_info_plus:
     dependency: transitive
     description:
@@ -118,11 +119,12 @@ packages:
   flutter_things:
     dependency: transitive
     description:
-      name: flutter_things
-      sha256: e30b13e26b68fca6b29769621b22ebd3db0af7ebfc6963a8612656ea54f3ac3a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: "4de64c4f58865d5134a53268a95a96db3cf30419"
+      url: "https://github.com/innerwilds/flutter_things"
+    source: git
+    version: "0.9.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -198,7 +200,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.4.4"
+    version: "0.5.1"
   meta:
     dependency: transitive
     description:
