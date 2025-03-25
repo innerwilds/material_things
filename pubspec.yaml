@@ -24,6 +24,7 @@ dev_dependencies:
   freezed: ^3.0.4
   build_runner: ^2.4.15
   very_good_analysis: ^7.0.0
+  characters: ^1.4.0
 
 flutter:
   assets:

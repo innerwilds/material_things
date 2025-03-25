@@ -32,6 +32,13 @@ class SelectLocalePage extends StatelessWidget {
     final ls =
         MaterialThingsLocalizations.maybeOf(context) ??
         MaterialThingsLocalizations.builtInEn;
+
+    final anyCountryHasCountryCode = locales.any((e) => e.countryCode != null);
+    final noCountryWidget = switch(anyCountryHasCountryCode) {
+      true => const SizedBox.shrink(),
+      false => null,
+    };
+
     return ScaffoldSelectAnyPage<ExtendedLocale>(
       onPeek: onPeek,
       canPop: canPop,
@@ -41,7 +48,7 @@ class SelectLocalePage extends StatelessWidget {
         return SearchItem(
           title: Text(locale.nameLocal),
           leading:
-              locale.countryCode != null ? Text(locale.countryEmoji!) : null,
+              locale.countryCode != null ? Text(locale.countryEmoji!) : noCountryWidget,
           value: locale,
         );
       },
